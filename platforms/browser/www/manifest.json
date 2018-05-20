@@ -1,0 +1,18 @@
+{
+  "background_color": "#FFF",
+  "display": "standalone",
+  "name": "Pedder",
+  "short_name": "Pedder",
+  "version": "org.pedder.app",
+  "description": "App para gerenciamento de pedidos.",
+  "author": "Gabriel Andrade",
+  "icons": [
+    {
+      "src": "resources/android/icon/drawable-xhdpi-icon.png",
+      "type": "image/png",
+      "sizes": "undefinedxundefined"
+    }
+  ],
+  "orientation": "portrait",
+  "start_url": "index.html"
+}

@@ -1,0 +1,89 @@
+{
+  "_from": "pushbots-cordova-plugin",
+  "_id": "pushbots-cordova-plugin@1.5.13",
+  "_inBundle": false,
+  "_integrity": "sha1-Nnwldk1h02ba/7WekiWC0DxvH+4=",
+  "_location": "/pushbots-cordova-plugin",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "pushbots-cordova-plugin",
+    "name": "pushbots-cordova-plugin",
+    "escapedName": "pushbots-cordova-plugin",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/pushbots-cordova-plugin/-/pushbots-cordova-plugin-1.5.13.tgz",
+  "_shasum": "367c25764d61d366daffb59e922582d03c6f1fee",
+  "_spec": "pushbots-cordova-plugin",
+  "_where": "C:\\Users\\Gabriel\\Desktop\\garconappHomolog",
+  "author": {
+    "name": "Pushbots"
+  },
+  "bugs": {
+    "url": "https://github.com/pushbots/phonegap/issues"
+  },
+  "bundleDependencies": false,
+  "cordova": {
+    "id": "pushbots-cordova-plugin",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "deprecated": false,
+  "description": "PushBots plugin for phonegap/Cordova.",
+  "engines": [
+    {
+      "name": "cordova",
+      "version": ">=7.0.0"
+    },
+    {
+      "name": "cordova-android",
+      "version": ">=5.2.0"
+    },
+    {
+      "name": "cordova-ios",
+      "version": ">=4.4.0"
+    },
+    {
+      "name": "apple-ios",
+      "version": ">=7.0.0"
+    },
+    {
+      "name": "apple-xcode",
+      "version": ">=8.0.0"
+    }
+  ],
+  "homepage": "https://github.com/pushbots/phonegap#readme",
+  "keywords": [
+    "push",
+    "notifications",
+    "pushnotifications",
+    "free push notifications",
+    "GCM",
+    "C2DM",
+    "Android push notifications",
+    "helium",
+    "APNS",
+    "Push Bots",
+    "PushBots",
+    "phonegap",
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios"
+  ],
+  "license": "Apache 2.0",
+  "name": "pushbots-cordova-plugin",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pushbots/phonegap.git"
+  },
+  "version": "1.5.13"
+}

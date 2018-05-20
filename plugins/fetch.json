@@ -1,0 +1,34 @@
+{
+  "cordova-plugin-whitelist": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-whitelist@^1.3.3"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-splashscreen": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-splashscreen@^5.0.2"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "phonegap-plugin-barcodescanner": {
+    "source": {
+      "type": "registry",
+      "id": "phonegap-plugin-barcodescanner@7.1.1"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "pushbots-cordova-plugin": {
+    "source": {
+      "type": "registry",
+      "id": "pushbots-cordova-plugin"
+    },
+    "is_top_level": true,
+    "variables": {}
+  }
+}

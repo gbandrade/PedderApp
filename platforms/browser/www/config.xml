@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="org.pedder.app" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Pedder</name>
+    <description>
+        App para gerenciamento de pedidos.
+    </description>
+    <author email="dev@cordova.apache.org" href="http://cordova.io">
+        Gabriel Andrade
+    </author>
+    <access origin="http://pedder.meteorapp.com" />
+    <icon src="resources/android/icon/drawable-xhdpi-icon.png" />
+    <preference name="Orientation" value="portrait" />
+    <preference name="Fullscreen" value="false" />
+    <preference name="BackgroundColor" value="0xF2F2F2FF" />
+    <preference name="SplashScreen" value="screen" />
+    <preference name="SplashScreenDelay" value="3000" />
+    <preference name="ShowSplashScreenSpinner" value="false" />
+</widget>

@@ -1,0 +1,138 @@
+.tabs .indicator {
+    background-color: white;
+}
+
+body {
+    background-color: #F2F2F2;
+}
+
+.row.collection-item.avatar.waves-effect {
+	padding-right: 0;
+}
+
+span.badge {
+    position: unset;
+    font-weight: bold;
+}
+
+div.input-field i {
+    color:#B71C1C !important;
+}
+
+p.add {
+    float: right;
+    padding-top: 60px;
+}
+
+p.add span.green {
+    margin-right: 5px;
+}
+
+p.add span.red {
+    margin-left: 5px;
+}
+
+
+.titulo {
+    font-size: 1.3rem;
+    margin-left: 5%;
+    margin-right: auto;
+	font-weight: 500;
+    text-shadow: 2px 2px 4px #000000;
+}
+
+.topo-fixo {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 2;
+}
+
+.section {
+    padding-top: 125px;
+}
+
+.frmLoginBtn,
+.frmCadastroBtn {
+    margin-left: 40px !important;
+}
+
+.remove {
+    width: 10%;
+    float: right;
+    text-align: center;
+    display: block;
+    padding-top: 30px;
+}
+
+.remove i{
+    color: #B71C1C !important;
+    height: 50px;
+    padding-top: 13px;
+    /*line-height:110px;*/
+}
+
+blockquote {
+    font-weight: bold;
+}
+
+#numero-mesa {
+    display: none;
+}
+
+.noMargin {
+    margin:0 !important;
+}
+
+.noBorder {
+    border:none !important;
+}
+
+.noRowMessage{
+    width: 100%;
+    text-align: center;
+    color:#ddd;
+}
+
+.B {
+    font-weight: bold;   
+}
+
+#cardapio img {
+    width: 100px;
+    height: 100px;
+}
+
+#cardapio p#titulo,
+#cardapio p#valor,
+#cardapio p.descricao  {
+    padding-left: 20px;
+    color: #A0A0A0;
+}
+
+div#meusPedidos p {
+    color: #A0A0A0;
+}
+.logoLogin {
+	width: 100px;
+	height: 100px;
+	margin-top: 60px;
+}
+.logoTelaInicial {
+	width: 80px;
+	height: 80px;
+	margin-top: 8px;
+}
+
+.collection .collection-item {
+	display: list-item !important;
+}
+
+.input-field .material-icons {
+	padding-top: 6px;
+}
+
+.botaoSimples {
+	margin-left: 15px;
+	text-transform: none;
+}
