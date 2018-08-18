@@ -1,0 +1,242 @@
+.tabs .indicator {
+    background-color: white;
+}
+
+body {
+    background-color: #F2F2F2;
+}
+
+.row.collection-item.avatar.waves-effect {
+	padding-right: 0;
+}
+
+span.badge {
+    position: relative;
+	right: 0 !important;
+	padding-right: 1px !important;
+}
+
+.addIcon {
+	color: green;
+	width: 20px;
+}
+
+.removeIcon {
+	color: red;
+	width: 20px;
+}
+
+div.input-field i {
+    color:#B71C1C !important;
+}
+
+.titulo {
+    font-size: 1.3rem;
+    margin-left: 5%;
+    margin-right: auto;
+	font-weight: 500;
+    text-shadow: 2px 2px 4px #000000;
+}
+
+.topo-fixo {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 2;
+}
+
+.section {
+    padding-top: 125px;
+}
+
+.frmLoginBtn,
+.frmCadastroBtn {
+    margin-left: 40px !important;
+}
+
+blockquote {
+	font-weight: 400;
+    line-height: 24px;
+}
+
+blockquote#resumo {
+	border-left: 3px solid #B71C1C !important;
+}
+
+blockquote#total {
+	border-left: 3px solid green !important;
+	color: rgba(0,0,0,.54);
+	font-weight: bold !important;
+}
+
+#numero-mesa {
+    display: none;
+}
+
+.noMargin {
+    margin:0 !important;
+}
+
+.noBorder {
+    border:none !important;
+}
+
+.noRowMessage{
+    width: 100%;
+    text-align: center;
+    color:#ddd;
+}
+
+.B {
+    font-weight: bold;   
+}
+
+/* #cardapio img { */
+    /* width: 100px; */
+    /* height: 100px; */
+/* } */
+
+#cardapio p#titulo,
+/* #cardapio p#valor, */
+#cardapio p.descricao  {
+    padding-left: 20px;
+    color: #A0A0A0;
+}
+
+div#meusPedidos p {
+    font-weight: 400;
+    line-height: 25px;
+    color: rgba(0,0,0,.54);
+}
+
+.logoLogin {
+	width: 100px;
+	height: 100px;
+	margin-top: 60px;
+}
+
+.logoTelaInicial {
+	width: 80px;
+	height: 80px;
+	margin-top: 8px;
+}
+
+.collection .collection-item {
+	display: list-item !important;
+}
+
+.input-field .material-icons {
+	padding-top: 6px;
+}
+
+.botaoSimples {
+	margin-left: 15px;
+	text-transform: none;
+}
+
+.sem-produtos-container,
+.sem-pedidos-container {
+    display: table;
+    height: 80vh;
+    width: 100%;
+}
+   
+.sem-produtos,
+.sem-pedidos {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    text-shadow: 0 0 2px rgba(0,0,0,0.05);
+    color: #ddd;
+    font-size: 3em;
+    font-style: italic;
+	font-family: Roboto;
+	font-weight: 400;
+	
+}
+
+.sem-produtos-container .sem-produtos,
+.sem-pedidos-container .sem-pedidos {
+    line-height: 40px;
+}
+
+input[type=text]:focus:not([readonly]),
+input[type=password]:focus:not([readonly]) {
+	border-bottom: 1px solid rgb(244, 67, 54) !important;
+	box-shadow: 0 1px 0 0 rgb(244, 67, 54) !important;
+}
+
+input[type=text]:focus:not([readonly])+label,
+input[type=password]:focus:not([readonly])+label{
+    color: rgb(244, 67, 54) !important;
+}
+
+.itensPedidos {
+    padding-left: 15px;
+    border-left: #b71c1c solid;
+}
+
+.totalPreco {
+    padding-left: 15px;
+    border-left: green solid;
+}
+
+.rowDadosProduto {
+    margin-top: 25px;
+    margin-left: -40px;
+	margin-bottom: 0;
+}
+
+.collection .collection-item.avatar .circle {
+	width: 85px;
+    height: 85px;
+	margin-top: 5px;
+}
+
+.row.rowDadosProduto span {
+    text-overflow: ellipsis;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: 0;
+    font-size: 12px;
+    color: rgba(0,0,0,.54);
+    box-sizing: border-box;
+}
+
+.row.rowDadosProduto p {
+	font-weight: 400;
+    line-height: 18px;
+	color: rgba(0,0,0,.54);
+}
+
+.pedido-data {
+	color: #999;
+	float: right;
+	font-size: 80%;
+	margin-right: 0.5em;
+	font-weight: 400;
+}
+.background {
+	overflow: hidden;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.side-nav li {
+    float: none;
+    padding: 0;
+}
+
+@media only screen and (max-width: 992px)
+.side-nav .user-view, .side-nav .userView {
+    padding: 16px 16px 0;
+}
+
+.side-nav .user-view, .side-nav .userView {
+    position: relative;
+    margin-bottom: 8px;
+}

@@ -18,6 +18,9 @@
     },
     "pushbots-cordova-plugin": {
       "PACKAGE_NAME": "org.pedder.app"
+    },
+    "cordova-plugin-browsersync": {
+      "PACKAGE_NAME": "org.pedder.app"
     }
   },
   "dependent_plugins": {}

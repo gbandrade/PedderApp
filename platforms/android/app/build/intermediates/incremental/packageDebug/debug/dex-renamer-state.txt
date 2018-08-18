@@ -1,4 +1,4 @@
-#Sat May 19 15:45:50 BRT 2018
-base.0=C\:\\Users\\Gabriel\\Desktop\\garconapp.v02\\platforms\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
+#Sat Aug 18 15:49:48 BRT 2018
+base.0=C\:\\Users\\Gabriel\\Desktop\\Rafael\\pedder-cliente\\pedderClienteApp\\platforms\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
 renamed.0=classes.dex
-file.0=C\:\\Users\\Gabriel\\Desktop\\garconapp.v02\\platforms\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0\\classes.dex
+file.0=C\:\\Users\\Gabriel\\Desktop\\Rafael\\pedder-cliente\\pedderClienteApp\\platforms\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0\\classes.dex

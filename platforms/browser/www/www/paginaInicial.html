@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta charset="utf-8">
+		<title>Pedder</title>
+		<link rel="stylesheet" href="icons/material.css">
+		<link rel="stylesheet" href="css/materialize.min.css">
+		<link rel="stylesheet" href="css/materialdesignicons.min.css">
+		<link rel="stylesheet" href="css/estilos.css">
+	</head>
+	<body onload="dadosUsuario();cardapio();meusPedidos()">
+		<div class="topo-fixo z-depth-1">
+			<div class="valign-wrapper red darken-4 white-text">
+				<a data-activates="slide-out" class="button-collapse" style="color: white;"><i class="material-icons" style="margin-left: 15px; margin-top: 8px;">menu</i></a>				
+				<h5 class="titulo">Pedder</h5>
+				<div>
+					<i class="mdi mdi-qrcode-scan mdi-24px material-icons waves-effect waves-light waves-circle	scan-qrcode"></i>
+					<i data-activates="submenu" datas-gutter="5"
+						data-contrainwidth="false"
+						class="material-icons waves-effect
+						waves-light waves-circle
+						dropdown-button">more_vert</i>
+					<ul class="dropdown-content" id="submenu">
+						<li><a class="black-text acao-limpar">Limpar</a></li>
+					</ul>
+				</div>
+			</div>
+			<ul class="tabs red darken-4">
+				<li class="tab">
+					<a href="#cardapio"
+						class="white-text waves-effect waves-light">
+					Cardápio
+					</a>
+				</li>
+				<li class="tab">
+					<a href="#meusPedidos"
+						class="white-text waves-effect waves-light">
+					Meus Pedidos
+					</a>
+				</li>
+			</ul>
+		</div>
+		<div id="cardapio" class="section">
+			<!--Loading-->
+			<div class="col s12 m4 center loading">
+				<div class="preloader-wrapper active">
+					<div class="spinner-layer spinner-red-only">
+						<div class="circle-clipper left">
+							<div class="circle"></div>
+						</div>
+						<div class="gap-patch">
+							<div class="circle"></div>
+						</div>
+						<div class="circle-clipper right">
+							<div class="circle"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="sem-produtos-container center-align" style="display: none">
+				<div class="sem-produtos">Nenhum produto cadastrado!</div>
+			</div>
+		</div>
+		<div id="meusPedidos" class="section">
+		</div>
+		<div class="fixed-action-btn">
+			<a href="#confirmacao" id="confirmar" 
+				class="btn-floating btn-large waves-effect waves-light red darken-4 modal-trigger disabled">
+			<i class="material-icons">done</i>
+			</a>
+		</div>
+		<div class="modal modal-fixed-footer" id="confirmacao">
+			<div class="modal-content">
+				<h5>Resumo do Pedido</h5>
+				<h6 id="lblMesa"></h6>
+				<input type="number" class="validate" placeholder="Número da mesa" id="numero-mesa" disabled>
+				<blockquote id="resumo" style="border-color:#B71C1C;">
+				</blockquote>
+				<blockquote id="total" style="border-color: green;">
+				</blockquote>
+			</div>
+			<div class="modal-footer">
+				<button class="btn red darken-4 waves-effect waves-light modal-close acao-finalizar">Pedir</button>
+				<button class="btn-flat waves-effect waves-red modal-close">Cancelar</button>
+			</div>
+		</div>
+		<ul id="slide-out" class="side-nav">
+			<li>
+				<div class="user-view">
+					<div class="background">
+						<img src="images/papel-parede.jpg">
+					</div>
+					<a><span id="dadosUsuarioNome" class="white-text name"></span></a>
+					<a><span id="dadosUsuarioEmail" class="white-text email"></span></a>
+				</div>
+			</li>
+			<li><a class="waves-effect" id="dadosUsuarioMesa" style="display: flex;">Mesa: <i class="material-icons" style="margin-top: 19px;margin-left: 10px;">help</i></a></li>
+			<li>
+				<div class="divider"></div>
+			</li>
+			<li><a href="file:///android_asset/www/index.html" class="waves-effect">Sair</a></li>
+		</ul>
+		<script src="cordova.js"></script>
+		<script src="js/jquery.min.js"></script>
+		<script src="js/materialize.min.js"></script>
+		<script src="js/app.js"></script>
+		<script>
+			$(document).ready(function(){
+			$('.button-collapse').sideNav();
+			});		
+		</script>
+	</body>
+</html>

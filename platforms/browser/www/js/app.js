@@ -1,92 +1,94 @@
 var userToken = "";
 
-$('#confirmar').on('click', function() {
-    var total = 0;
-    var texto = "";
+$('#confirmar').on('click', function(e) {
+    if (!$(this).hasClass("disabled")) {
+        var total = 0;
+        var texto = "";
 
-    $('.collection-item .badge').each(function(){
+        $('.collection-item .badge').each(function() {
+            if (parseInt($(this).text()) > 0) {
 
-    if($(this).text() != 0) { 
-           
-            var produto = $(this).parent(".add").siblings("#titulo").text();
-            var quantidade =  parseInt($(this).text());
-            texto += "<div> - " + produto + ": " + quantidade + "</div>";
+                var produto = $(this).parent().parent().parent().find(".title").text();
+                var quantidade = parseInt($(this).text());
+                texto += "<div>" + produto + ": " + quantidade + "<br></div>";
 
-            var valor =  $(this).parent(".add").siblings("#valor").text();
-            valor = parseFloat(valor.split("R$")[1].replace(',','.'));
-            total = parseFloat(total) + parseFloat(valor * quantidade);
-        }
+                var valor = $(this).parent().parent().parent().find("#valor").text();
+                valor = parseFloat(valor.split("R$")[1].replace(/\./g, '').replace(',', '.'));
+                total = parseFloat(total) + parseFloat(valor * quantidade);
+            }
+        });
 
-    });
-
-
-
-    $('#resumo').html(texto);
-    $('#total').html("Total: R$" + total.toFixed(2).toString().replace(".",","));
+        $('#resumo').html(texto);
+        $('#total').html("Total: " + total.toLocaleString('pt-BR', { minimumFractionDigits: 2 , style: 'currency', currency: 'BRL' }));
+    } else {
+        e.preventDefault();
+        $(this).off("click").attr('href', 'javascript: void(0)');
+    }
 });
-
 
 $('.acao-limpar').on('click', function() {
     $('.badge').text("0");
-    $('.remove').html("");
 });
 
-$('.scan-qrcode').click(function(){
+$('.scan-qrcode').click(function() {
     scanQrcode();
 });
 
-$('.acao-finalizar').click(function(){
-    if($('#numero-mesa').val() != "") {
+$('.acao-finalizar').click(function() {
+    if ($('#numero-mesa').val() != "") {
         novoPedido();
+    } else {
+        Materialize.toast("Escaneie o QRCode para identificar sua mesa.", 2000, 'red-text', function() {
+            scanQrcode(true)
+        });
     }
-    else {
-         Materialize.toast("Escaneie o QRCode para identificar sua mesa.", 2000, 'red-text', function() {scanQrcode(true)});
-     }
 });
 
 $('.acao-cadastro').click(function() {
-    userToken = window.location.href.split("?token=")[1];
+    //userToken = window.location.href.split("?token=")[1];]
+    userToken = window.localStorage.getItem("tokenId");
     $.ajax({
         url: 'http://pedder.meteorapp.com/novo-usuario',
         data: {
-            nome: $('#nome').val(), 
+            nome: $('#nome').val(),
             login: $('#login').val(),
             senha: $('#password').val()
         },
-        success: function(resposta){
+        success: function(resposta) {
             resposta = JSON.parse(resposta);
 
-            if(resposta[0].status == "error")
+            if (resposta[0].status == "error" && $('.toast').length == 0)
                 Materialize.toast(resposta[0].msg, 2000, 'red-text');
             else
-                window.location="paginaInicial.html?token=" + userToken + "&userId=" + resposta[0].usuario._id;
+                window.location = "paginaInicial.html?token=" + userToken + "&userId=" + resposta[0].usuario._id;
         },
-        error: function(erro){
+        error: function(erro) {
             var erroJson = JSON.parse(erro.responseText);
-            if($('.toast').length == 0)
+            if ($('.toast').length == 0)
                 Materialize.toast(erroJson[0].msg, 3000, 'red-text');
         }
     })
 });
 
 $('.acao-login').click(function() {
-    userToken = $('#token').val();
+    //userToken = $('#token').val();
+    userToken = window.localStorage.getItem("tokenId");
     $.ajax({
         url: 'http://pedder.meteorapp.com/loga-usuario',
         data: {
             login: $('#login').val(),
             senha: $('#password').val()
         },
-        success: function(resposta){
+        success: function(resposta) {
             resposta = JSON.parse(resposta);
-            if(resposta[0].status == "error" && $('.toast').length == 0) 
-               Materialize.toast(resposta[0].msg, 2000, 'red-text');
+            if (resposta[0].status == "error" && $('.toast').length == 0)
+                Materialize.toast(resposta[0].msg, 2000, 'red-text');
             else
-                window.location="paginaInicial.html?token=" + userToken + "&userId=" + resposta[0].usuario._id;
+                window.location = "paginaInicial.html?token=" + userToken + "&userId=" + resposta[0].usuario._id;
 
         },
-        error: function(erro){
-            if($('.toast').length == 0)
+        error: function(erro) {
+            if ($('.toast').length == 0)
                 Materialize.toast(erro.responseText, 3000, 'red-text');
         }
     });
@@ -96,79 +98,113 @@ $('a[href="#meusPedidos"]').click(function() {
     meusPedidos();
 });
 
-$('.redirectCadastro').click(function(){
-    userToken = $('#token').val();
-    window.location="cadastro.html?token=" + userToken;
+$('.redirectCadastro').click(function() {
+    //userToken = $('#token').val();
+    userToken = window.localStorage.getItem("tokenId");
+    window.location = "cadastro.html?token=" + userToken;
 });
-
-
 
 function onLoad() {
     document.addEventListener("deviceready", onDeviceReady, false);
 }
 
 function onDeviceReady() {
-    window.plugins.PushbotsPlugin.initialize("5ae2632e1db2dc0baa09c7a3", {"android":{"sender_id":"989712426350"}});
+    window.plugins.PushbotsPlugin.initialize("5ae2632e1db2dc0baa09c7a3", {
+        "android": {
+            "sender_id": "989712426350"
+        }
+    });
     // Only with First time registration
-    window.plugins.PushbotsPlugin.on("registered", function(token){
+    window.plugins.PushbotsPlugin.on("registered", function(token) {
         console.log("Registration Id:" + token);
     });
 
     //Get user registrationId/token and userId on PushBots, with evey launch of the app even launching with notification
-    window.plugins.PushbotsPlugin.on("user:ids", function(data){
+    window.plugins.PushbotsPlugin.on("user:ids", function(data) {
         console.log("user:ids" + JSON.stringify(data));
         $('#token').val(data.token);
+        window.localStorage.setItem("tokenId", data.token)
     });
 }
 
 function scanQrcode(blnFazPeido) {
-    cordova.plugins.barcodeScanner.scan(function(resultado){
-        if (resultado.text) {
-            $('#numero-mesa').val(resultado.text);
-            $('#lblMesa').text("Mesa: " + resultado.text);
+    cordova.plugins.barcodeScanner.scan(function(resultado) {
+            if (resultado.text) {
+                $('#numero-mesa').val(resultado.text);
+                $('#lblMesa').text("Mesa: " + resultado.text);
+                $('#dadosUsuarioMesa').text("Mesa: " + resultado.text);
 
-            if(blnFazPeido)
-                novoPedido();
-            else
-                Materialize.toast('Mesa ' + resultado.text, 2000);
+                if (blnFazPeido)
+                    novoPedido();
+                else
+                    Materialize.toast('Mesa ' + resultado.text, 2000);
+            }
+        },
+        function(erro) {
+            Materialize.toast('Erro ' + erro, 2000, 'red-text');
+        });
+}
+
+function dadosUsuario() {
+    $.ajax({
+        url: 'http://pedder.meteorapp.com/dados-usuario',
+        data: {
+            userId: window.location.href.split("&userId=")[1]
+        },
+        success: function(resposta) {
+            resposta = JSON.parse(resposta);
+            if (resposta[0].usuario) {
+                $('#dadosUsuarioNome').text(resposta[0].usuario.nome);
+                $('#dadosUsuarioEmail').text(resposta[0].usuario.login);
+            }
         }
-    },
-    function(erro) {
-        Materialize.toast('Erro ' + erro, 2000, 'red-text');
     });
 }
 
-function meusPedidos(){
+function meusPedidos() {
     $.ajax({
         url: 'http://pedder.meteorapp.com/lista-pedido',
         data: {
             userId: window.location.href.split("&userId=")[1]
         },
-        success: function(resposta){
+        success: function(resposta) {
             resposta = JSON.parse(resposta);
             var html = "";
-            if(resposta[0].pedidos.length > 0) {
+            if (resposta[0].pedidos.length > 0) {
                 $("#meusPedidos").html("");
-                for(var i = 0; i < resposta[0].pedidos.length; i++) {
-                    html += '<div class="collection">';
-                    html += '   <a class="collection-item  black-text">';
-                    html +=     resposta[0].pedidos[i].ativo ? '<p class="green-text noMargin B">Preparando</p>' : '<p class="red-text noMargin B">Finalizado</p>';
-                    html +=     '<p class="noMargin">' + resposta[0].pedidos[i].itens.split(' -').join('</br>') + '</p>';
-                    html +=     '<p> Total: R$' + resposta[0].pedidos[i].preco + '</p>';
+                html += '<ul class="collection">';
+                for (var i = 0; i < resposta[0].pedidos.length; i++) {
+                    html += '   <a class="collection-item  waves-effect black-text">';
+                    if (resposta[0].pedidos[i].ativo) {
+                        if (resposta[0].pedidos[i].status == 'Aguardando Aceite') {
+                            html += '<p class="yellow-text text-darken-2 B">Pendente<i class="pedido-data">Atualizado em: ' + new Date(resposta[0].pedidos[i].dataUltimaAtualizacao).toLocaleString('pt-BR') + '</i></p>';
+                        } else if (resposta[0].pedidos[i].status == 'Aceito') {
+                            html += '<p class="green-text B">Em Preparo<i class="pedido-data">Atualizado em: ' + new Date(resposta[0].pedidos[i].dataUltimaAtualizacao).toLocaleString('pt-BR') + '</i></p>';
+                            html += '<p style="display: flex;"><i class="material-icons" style="margin-right: 5px;">access_time</i>Tempo Estimado: ' + resposta[0].pedidos[i].tempoEstimado + ' min.</p>';
+                        }
+                    } else {
+                        if (resposta[0].pedidos[i].status == 'Recusado') {
+                            html += '<p class="red-text B">Recusado<i class="pedido-data">Atualizado em: ' + new Date(resposta[0].pedidos[i].dataUltimaAtualizacao).toLocaleString('pt-BR') + '</i></p>';
+                            html += '<p style="display: flex;"><i class="material-icons" style="margin-right: 5px;">feedback</i>Motivo: ' + resposta[0].pedidos[i].motivoRecusa + '</p>';
+                        } else if (resposta[0].pedidos[i].status == 'Finalizado') {
+                            html += '<p class="blue-text B">Finalizado<i class="pedido-data">Atualizado em: ' + new Date(resposta[0].pedidos[i].dataUltimaAtualizacao).toLocaleString('pt-BR') + '</i></p>';
+                        }
+                    }
+                    html += '<p>' + resposta[0].pedidos[i].itens + '</p>';
+                    html += '<p style="font-weight: bold"> Total: ' + parseFloat(resposta[0].pedidos[i].preco.replace(/\./g, '').replace(',', '.')).toLocaleString('pt-BR', { minimumFractionDigits: 2 , style: 'currency', currency: 'BRL' }) + '</p>';
                     html += '   </a>';
-                    html += '</div>';
                 }
-            }
-            else {
-                 html += '<div class="collection noBorder">';
-                 html += '   <div class="collection-item noRowMessage">';
-                 html += '     <h5 class="B">Você ainda não fez nenhum pedido</h5>';
-                 html += '   </div>';
-                 html += '</div>';
+                html += '</div>';
+            } else {
+                html += '<div class="sem-pedidos-container center-align">';
+                html += '   <div class="sem-pedidos">';
+                html += '     Nenhum pedido realizado!';
+                html += '   </div>';
+                html += '</div>';
             }
             $("#meusPedidos").html(html);
         },
-        error: function(erro){
+        error: function(erro) {
             Materialize.toast(erro.responseText, 3000, 'red-text');
         }
     });
@@ -179,18 +215,18 @@ function novoPedido() {
         url: 'http://pedder.meteorapp.com/novo-pedido',
         data: {
             mesa: $('#numero-mesa').val(),
-            pedido: $('#resumo').text(),
-            userToken: window.location.href.split("?token=")[1].split("&")[0],
+            pedido: $('#resumo').html().replace(/<div>/g, "").replace(/<\/div>/g, "").replace(new RegExp("<br>$"), ""),
+            userToken: window.localStorage.getItem("tokenId"),
+            //userToken: window.location.href.split("?token=")[1].split("&")[0],
             userId: window.location.href.split("&userId=")[1],
             preco: $('#total').text().split("R$")[1]
         },
-        success: function(resposta){
-            Materialize.toast(resposta, 2000, 'green-text');     
+        success: function(resposta) {
+            Materialize.toast(resposta, 2000, 'green-text');
             $('.badge').text("0");
-            $('.remove').html("");
         },
-        error: function(erro){
-           Materialize.toast(erro.responseText, 3000, 'red-text');
+        error: function(erro) {
+            Materialize.toast(erro.responseText, 3000, 'red-text');
         }
     });
 }
@@ -198,50 +234,59 @@ function novoPedido() {
 function cardapio() {
     $.ajax({
         url: 'http://pedder.meteorapp.com/produtos',
-        success: function(resposta){
-            var html = "";
-            html += '<div class="collection">';
-            for(var i=0; i < resposta[0].produtos.length; i++) {
-                html += '<a class="collection-item black-text">';
-                //html += '   <p class="remove"></p>';
-                html += '   <p class="add">';
-                html += '       <span class="btn-add btn-floating btn-small waves-effect waves-light green darken-2"><i class="material-icons">add</i></span>';
-                html += '       <span class="badge red-text">0</span>';
-                html += '       <span class="btn-remove btn-floating btn-small waves-effect waves-light red darken-4"><i class="material-icons">remove</i></span>';
-                html += '   </p>';
-                html += '   <img src="' + resposta[0].produtos[i].image + '"/>';
-                html += '   <p id="titulo">' + resposta[0].produtos[i].nome + '</p>';
-                html += '   <p class="descricao">' + resposta[0].produtos[i].descricao + '</p>';
-                html += '   <p id="valor">R$' + parseFloat(resposta[0].produtos[i].preco.replace(',','.')).toFixed(2).replace('.', ',').toString() + '</p>';
-                html += '</a>';
-            }
+        success: function(resposta) {
 
-            html += '</div>';
-
-            $('#cardapio div').remove();
-            $('#cardapio').html(html);
-
-            $('.btn-add').on('click', function(){
-                //var $badge = $('.badge', this);
-                var $badge = $(this).siblings('.badge');
-                
-
-                if($badge.text() == "") {
-                    $badge.text(0 + 1);
+            if (resposta[0].produtos.length > 0) {
+                var html = "";
+                html += '<ul class="collection">';
+                for (var i = 0; i < resposta[0].produtos.length; i++) {
+                    html += '<li class="collection-item avatar waves-effect" style="padding-right: 0">';
+                    html += '  		<div class="row" style="margin-bottom: 0;"><img src="' + resposta[0].produtos[i].image + '" alt="" class="circle" style="margin-left: 15px;">';
+                    html += '   		<div class="col s12" style="text-align: right; padding-right: 25px; padding-top: 15px;"><i class="material-icons waves-effect waves-light waves-circle removeIcon">remove</i>';
+                    html += '   			<span class="badge">0</span>';
+                    html += '   			<i class="material-icons waves-effect waves-light waves-circle addIcon">add</i>';
+                    html += '   		</div>';
+                    html += '   	</div>';
+                    html += '   	<div class="row rowDadosProduto"><span class="title">' + resposta[0].produtos[i].nome + '</span>';
+                    html += '   		<p id="valor">' + resposta[0].produtos[i].descricao + ' <br>';
+					var preco = resposta[0].produtos[i].preco.replace("R$ ", "").replace(/\./g, "").replace(',', '.');
+                    html += 		 	parseFloat(preco).toLocaleString('pt-BR', { minimumFractionDigits: 2 , style: 'currency', currency: 'BRL' });
+                    html += '   		</p>';
+                    html += '   	</div>';
+                    html += '</li>';
                 }
-                else        
-                    $badge.text(parseInt($badge.text()) + 1); 
-            });
+                html += '</ul>';
 
-            $('.btn-remove').on('click', function(){
-                //var $badge = $('.badge', this);
-                var $badge = $(this).siblings('.badge');
+                $("#confirmar").removeClass("disabled");
+                $('#cardapio div').remove();
+                $('#cardapio').html(html);
 
-                if($badge.text() > 0) 
-                    $badge.text(parseInt($badge.text()) - 1); 
-            });
+                $('.collection-item').on('click', function(event) {
+                    if ($(event.target).hasClass("addIcon") || $(event.target).hasClass("removeIcon"))
+                        return;
+                    var $badge = $('.badge', this);
 
+                    if ($badge.text() == "0") {
+                        $badge.text(0 + 1);
+                    } else
+                        $badge.text(parseInt($badge.text()) + 1);
+                });
 
+                $('.addIcon').on('click', function() {
+                    var $badge = $('.badge', $(this).parent()[0]);
+                    $badge.text(parseInt($badge.text()) + 1);
+                });
+
+                $('.removeIcon').on('click', function() {
+                    var $badge = $('.badge', $(this).parent()[0]);
+                    if (parseInt($badge.text()) > 0) {
+                        $badge.text(parseInt($badge.text()) - 1);
+                    }
+                });
+            } else {
+                $('#cardapio .loading').remove();
+                $('#cardapio .sem-produtos-container').css('display', 'table');
+            }
         }
     });
 }

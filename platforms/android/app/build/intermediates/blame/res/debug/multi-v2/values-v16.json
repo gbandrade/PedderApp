@@ -1,6 +1,36 @@
 {
     "logs": [
         {
+            "outputFile": "C:\\Projeto Final\\App\\Pedder\\platforms\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v16\\values-v16.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\Gabriel\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-26.1.0.aar\\8949c8d8815df580126a222900b13c93\\res\\values-v16\\values-v16.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "65",
+                        "endOffsets": "116"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "C:\\Users\\Gabriel\\Desktop\\Rafael\\pedder-cliente\\pedderClienteApp\\platforms\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v16\\values-v16.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\Gabriel\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-26.1.0.aar\\8949c8d8815df580126a222900b13c93\\res\\values-v16\\values-v16.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "65",
+                        "endOffsets": "116"
+                    }
+                }
+            ]
+        },
+        {
             "outputFile": "C:\\Users\\Gabriel\\Desktop\\garconappHomolog\\platforms\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v16\\values-v16.xml",
             "map": [
                 {
@@ -16,10 +46,25 @@
             ]
         },
         {
-            "outputFile": "C:\\Users\\Gabriel\\Desktop\\garconapp.v02\\platforms\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v16\\values-v16.xml",
+            "outputFile": "C:\\Users\\rtcar\\Desktop\\pedder-cliente\\pedderClienteApp\\platforms\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v16\\values-v16.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Gabriel\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-26.1.0.aar\\8949c8d8815df580126a222900b13c93\\res\\values-v16\\values-v16.xml",
+                    "source": "C:\\Users\\rtcar\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-26.1.0.aar\\fe1cc28576f0ee678313b8f806d36a05\\res\\values-v16\\values-v16.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "65",
+                        "endOffsets": "116"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "C:\\Users\\rtcar\\Desktop\\garconappHomolog.v05.13052018\\garconappHomolog\\platforms\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v16\\values-v16.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\rtcar\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-26.1.0.aar\\fe1cc28576f0ee678313b8f806d36a05\\res\\values-v16\\values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

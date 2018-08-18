@@ -43,7 +43,8 @@ module.exports.metadata =
     "cordova-plugin-whitelist": "1.3.3",
     "cordova-plugin-splashscreen": "5.0.2",
     "phonegap-plugin-barcodescanner": "7.1.1",
-    "pushbots-cordova-plugin": "1.5.13"
+    "pushbots-cordova-plugin": "1.5.13",
+    "cordova-plugin-browsersync": "0.1.7"
 }
 // BOTTOM OF METADATA
 });
